@@ -37,6 +37,16 @@ linkedin:
   urlTemplate: "https://linkedin.com/in/{value}"
   icon: "fab fa-linkedin"
 
+hackerone:
+  name: "HackerOne"
+  urlTemplate: "https://hackerone.com/{value}"
+  icon: "fas fa-bug"
+
+lichess:
+  name: "Lichess"
+  urlTemplate: "https://lichess.org/@/{value}"
+  icon: "fas fa-chess-knight"
+
 xing:
   name: "Xing"
   urlTemplate: "https://www.xing.com/profile/{value}"
