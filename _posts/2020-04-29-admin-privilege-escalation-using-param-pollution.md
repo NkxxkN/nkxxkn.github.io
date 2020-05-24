@@ -4,7 +4,7 @@ title: Admin privilege escalation using parameter pollution
 subtitle: 
 tags: [write-up, parameter pollution, high, takeaways, $1500]
 comments: false
-published: true
+published: false
 ---
 
 ### Background
