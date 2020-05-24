@@ -22,6 +22,7 @@ p {
   margin: 30px 0;
 }
 h1,h2,h3,h4,h5,h6 {
+  color: #CECECE  !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
@@ -639,12 +640,12 @@ table {
 }
 table tr {
   border-top: 1px solid #cccccc;
-  background-color: #ffffff;
+  background-color: #198c51;
   margin: 0;
   padding: 0;
 }
 table tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: #59a47e;
 }
 table tr th {
   font-weight: bold;
@@ -670,6 +671,9 @@ table tr td :last-child {
 
 /* --- Code blocks --- */
 
+strong {
+  color: #FFF;
+}
 pre {
   font-size: 16px;
   line-height: 1.5em;
