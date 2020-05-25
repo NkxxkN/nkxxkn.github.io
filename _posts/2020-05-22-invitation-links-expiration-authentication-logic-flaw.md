@@ -4,7 +4,7 @@ title: Invitation links expiration authentication logic flaw
 subtitle: 
 tags: [write-up, high, p2]
 comments: false
-published: true
+published: false
 ---
 
 ## Introduction
@@ -58,11 +58,13 @@ Similarly, an employee could see his permission level reduced in software. Using
 
 **You should always verify upon registration that the account who generated the invitation link does not have fewer privileges than the newly created account**
 
-
 ## Email invitations
 
-Email invitations are the most common way of inviting new employees to join an organization.  Employees aware that they are about to get fired could send an invitation to one of their personal emails and achieve the same attack that way. 
+Email invitations are the most common way of inviting new employees to join an organization.  
 
+Employees aware that they are about to get fired could send an invitation to one of their personal emails and achieve the same attack that way. In this case it should be easier to detect by the account owner because they will see that a new strange account is registered while they disable the employee's account and should be able to connect the dots. That is easier for the account owner to realize that something is wrong if the pending accounts are listed alongside active accounts in the user list. Otherwise, it's really easy to miss.
+
+At the moment, I haven't reported this as a vulnerability to bug bounty programs because I do consider that since in that case, the account was created before the employee got deactivated, it is the account owner's duty to verify all other accounts are legitimate while they deactivate the employee's account. Ideally though, same as before, you should always verify that the account who generated the invite is still active.
 
 ## Approved domains self-registration
 
@@ -76,6 +78,15 @@ Using such techniques, any employees could keep a valid invitation link in order
 **You should make sure you forbid any new signup from ^john.doe+.*@domain\.com$ if john.doe@domain.com (and also john.doe+somethingelse@domain.com) was previously deactivated.**
 
 Note: [Email specifications](https://tools.ietf.org/html/rfc822) also allow for `(comment)me@nkix.xyz` or even `me@(comment)nkix.xyz`. But most systems will not allow for parenthesis in email address upon registration, making it impossible to leverage in the scenario described above. 
+
+### General recommandations for mitigation
+
+Here are few advices that will help mitigate this vulnerability:
+ - Verify upon registration that the account who generated the invitation link was not disabled.
+ - Verify upon registration that the account who generated the invitation link does not have fewer privileges than the newly created account.
+ - Send an email to account owner when a new user signup.
+ - Ask for account owner approval before new sign up can access sensitive data.
+ - List pending users in the users list. That way, when admins delete employees accounts, they can visualy verify wether there are suspicious pending accounts.
 
 ### Reporting at scale
 
